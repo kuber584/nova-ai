@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NOVA AI</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#080b18;color:#fff}
+header{padding:22px;background:#10152b;border-bottom:1px solid #292d4b}
+.logo{font-size:28px;font-weight:bold;color:#8b9dff}
+.logo span{color:#c084fc}
+main{max-width:800px;margin:40px auto;padding:20px}
+.hero{text-align:center;padding:35px 10px}
+h1{font-size:42px;margin-bottom:12px}
+h1 span{color:#9b8cff}
+p{color:#b8bfd9;line-height:1.6}
+.chat{background:#11162b;border:1px solid #303655;border-radius:18px;padding:16px}
+#messages{min-height:120px;max-height:350px;overflow:auto}
+.message{padding:12px;margin:10px 0;border-radius:12px;line-height:1.5}
+.user{background:#28325c}
+.bot{background:#1b2240}
+.row{display:flex;gap:8px}
+input{flex:1;min-width:0;padding:15px;background:#090d1d;color:white;border:1px solid #41496b;border-radius:12px;font-size:16px}
+button{padding:14px 18px;border:0;border-radius:12px;background:#8175ff;color:white;font-weight:bold;font-size:15px}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:22px}
+.card{padding:18px;background:#12182e;border:1px solid #303655;border-radius:14px}
+footer{text-align:center;padding:25px;color:#8189aa;font-size:13px}
+@media(max-width:500px){h1{font-size:34px}.cards{grid-template-columns:1fr}main{margin:15px auto}}
+</style>
+</head>
+<body>
+<header><div class="logo">✦ NOVA <span>AI</span></div></header>
+<main>
+<section class="hero">
+<h1>Meet your <span>AI assistant</span></h1>
+<p>Think bigger. Learn faster. Create something new.</p>
+</section>
+<section class="chat">
+<div id="messages">
+<div class="message bot">Hello! Welcome to NOVA AI. 👋<br>I'm your AI assistant interface. Ask me something!</div>
+</div>
+<div class="row">
+<input id="prompt" placeholder="Ask NOVA AI anything..." />
+<button onclick="sendMessage()">Send</button>
+</div>
+<p style="font-size:12px">Demo version — connect an AI service for real AI answers.</p>
+</section>
+<section class="cards">
+<div class="card">🤖 <b>AI Chat</b><p>Ask questions and explore ideas.</p></div>
+<div class="card">✍️ <b>AI Creator</b><p>Plan stories and create content.</p></div>
+<div class="card">💻 <b>Coding Assistant</b><p>Learn coding step by step.</p></div>
+<div class="card">📚 <b>Learning Hub</b><p>Discover and learn new skills.</p></div>
+</section>
+</main>
+<footer>© 2026 NOVA AI · Built for curious minds</footer>
+<script>
+function sendMessage(){
+const input=document.getElementById('prompt');
+const text=input.value.trim();
+if(!text)return;
+const box=document.getElementById('messages');
+const user=document.createElement('div');
+user.className='message user';
+user.textContent='You: '+text;
+box.appendChild(user);
+const bot=document.createElement('div');
+bot.className='message bot';
+bot.textContent='NOVA AI demo: Your message was received! Real AI answers will be available after connecting a secure AI backend.';
+box.appendChild(bot);
+input.value='';
+box.scrollTop=box.scrollHeight;
+}
+document.getElementById('prompt').addEventListener('keydown',function(e){if(e.key==='Enter')sendMessage()});
+</script>
+</body>
+</html>
